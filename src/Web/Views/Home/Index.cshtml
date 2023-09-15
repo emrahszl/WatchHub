@@ -1,6 +1,7 @@
 ﻿@model HomeViewModel
 @{
     ViewData["Title"] = "Home Page";
+    var pi = Model.PaginationInfo;
 }
 
 <div class="card mb-3">
@@ -50,3 +51,24 @@
         </div>
     }
 </div>
+
+<nav class="d-flex justify-content-center mt-2">
+    <ul class="pagination">
+        <li class="page-item @(pi.HasPrevious ? "" : "disabled")">
+            <a class="page-link" asp-route-CategoryId="@Model.CategoryId" asp-route-BrandId="@Model.BrandId" asp-route-PageId="@(pi.PageId - 1)">
+                <span aria-hidden="true"><i class="fa-solid fa-angle-left"></i></span>
+            </a>
+        </li>
+        @for (int i = 1; i <= pi.TotalPages; i++)
+        {
+            <li class="page-item @(i == pi.PageId ? "active" : "")">
+                <a class="page-link" asp-route-CategoryId="@Model.CategoryId" asp-route-BrandId="@Model.BrandId" asp-route-PageId="@i">@i</a>
+            </li>
+        }
+        <li class="page-item @(pi.HasNext ? "" : "disabled")">
+            <a class="page-link" asp-route-CategoryId="@Model.CategoryId" asp-route-BrandId="@Model.BrandId" asp-route-PageId="@(pi.PageId + 1)>
+                <span aria-hidden="true"><i class="fa-solid fa-angle-right"></i></span>
+            </a>
+        </li>
+    </ul>
+</nav>
