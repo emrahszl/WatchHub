@@ -37,7 +37,6 @@ namespace Infrastructure.Identity
 
             await userManager.CreateAsync(adminUser, AuthorizationConstant.DEFAULT_PASSWORD);
             await userManager.AddToRoleAsync(adminUser, AuthorizationConstant.Roles.ADMINISTRATOR);
-
         }
     }
 }
