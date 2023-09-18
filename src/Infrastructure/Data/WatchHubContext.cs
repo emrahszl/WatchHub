@@ -23,6 +23,10 @@ namespace Infrastructure.Data
 
         public DbSet<Category> Categories => Set<Category>();
 
+        public DbSet<Basket> Baskets => Set<Basket>();
+
+        public DbSet<BasketItem> BasketItems => Set<BasketItem>();
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
