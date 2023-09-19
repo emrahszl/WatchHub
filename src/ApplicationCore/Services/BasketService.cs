@@ -46,6 +46,7 @@ namespace ApplicationCore.Services
                     Product = product
                 };
 
+                basket.BasketItems.Add(basketItem);
             }
 
             await _basketRepo.UpdateAsync(basket);
