@@ -1,18 +1,22 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Web.Interfaces;
 
 namespace Web.ViewComponents
 {
     public class NavbarBasketViewComponent : ViewComponent
     {
-        //todo: yarın IBasketViewModelService üzerinden BasketViewModel türünde sepeti buraya getireceğiz ve öğelerinin sayısını View'a aktaracağız. O View'da navbarın sağ üstüne view component ile yerleştirilecek.
-        public NavbarBasketViewComponent()
+        private readonly IBasketViewModelService _basketViewModelService;
+
+        public NavbarBasketViewComponent(IBasketViewModelService basketViewModelService)
         {
-            
+            _basketViewModelService = basketViewModelService;
         }
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            return View();
+            var basket = await _basketViewModelService.GetBasketViewModelAsync();
+
+            return View(basket);
         }
     }
 }
