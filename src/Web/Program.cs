@@ -52,6 +52,8 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseBasketTransfer();
+
 app.UseAuthorization();
 
 app.MapControllerRoute(
