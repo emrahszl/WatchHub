@@ -25,7 +25,7 @@ namespace ApplicationCore.Services
 
             Order order = new Order() 
             {
-                 ShipToAdress = shippingAddress,
+                 ShipToAddress = shippingAddress,
                  BuyerId = buyerId,
                  OrderItems = basket.BasketItems.Select(bi => new OrderItem()
                  {

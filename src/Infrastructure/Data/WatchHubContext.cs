@@ -17,6 +17,7 @@ namespace Infrastructure.Data
 
         }
 
+
         public DbSet<Product> Products => Set<Product>();
 
         public DbSet<Brand> Brands => Set<Brand>();
@@ -26,6 +27,11 @@ namespace Infrastructure.Data
         public DbSet<Basket> Baskets => Set<Basket>();
 
         public DbSet<BasketItem> BasketItems => Set<BasketItem>();
+
+        public DbSet<Order> Orders => Set<Order>();
+
+        public DbSet<OrderItem> OrderItems => Set<OrderItem>();
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
