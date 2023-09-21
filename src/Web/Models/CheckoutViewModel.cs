@@ -14,7 +14,7 @@ namespace Web.Models
         [Display(Name = "City")]
         public string City { get; set; } = null!;
 
-        [Required, MaxLength (60)]
+        [MaxLength (60)]
         [Display(Name = "State")]
         public string? State { get; set; }
 
