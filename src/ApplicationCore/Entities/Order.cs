@@ -8,7 +8,7 @@ namespace ApplicationCore.Entities
 {
     public class Order : BaseEntity
     {
-        public int BuyerId { get; set; }
+        public string BuyerId { get; set; } = null!;
 
         public DateTimeOffset OrderDate { get; set; } = DateTimeOffset.Now;
 
