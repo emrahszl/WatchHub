@@ -16,7 +16,7 @@ namespace Web.Models
 
         [Required, MaxLength (60)]
         [Display(Name = "State")]
-        public string? State { get; set; } = null!;
+        public string? State { get; set; }
 
         [Required, MaxLength (90)]
         [Display(Name = "Country")]

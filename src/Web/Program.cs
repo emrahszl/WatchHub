@@ -15,10 +15,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddDbContext<AppIdentityContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("AppIdentityContext")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("AppIdentityContext")));
 
 builder.Services.AddDbContext<WatchHubContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("WatchHubContext")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("WatchHubContext")));
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
