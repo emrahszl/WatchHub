@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Web.Interfaces;
 
 namespace Web.Controllers
@@ -51,6 +52,41 @@ namespace Web.Controllers
             TempData["SuccessMessage"] = "Cart updated successfully";
 
             return RedirectToAction("Index");
+        }
+
+        [Authorize]
+        public async Task<IActionResult> Checkout()
+        {
+            var basket = await _basketViewModelService.GetBasketViewModelAsync();
+
+            var cvm = new CheckoutViewModel()
+            {
+                Basket = basket
+            };
+
+            return View(cvm);
+        }
+
+        [Authorize]
+        [HttpPost, ValidateAntiForgeryToken]
+        public async Task<IActionResult> Checkout(CheckoutViewModel cvm)
+        {
+            if (ModelState.IsValid)
+            {
+                await _basketViewModelService.CheckoutAsync(cvm.Street, cvm.City, cvm.State, cvm.Country, cvm.ZipCode);
+
+                return RedirectToAction("OrderConfirmed");
+            }
+
+            cvm.Basket = await _basketViewModelService.GetBasketViewModelAsync();
+
+            return View(cvm);
+        }
+
+        [Authorize]
+        public async Task<IActionResult> OrderConfirmed()
+        {
+            return View();
         }
     }
 }
