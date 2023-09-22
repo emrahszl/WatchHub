@@ -21,6 +21,11 @@ Install-Package Microsoft.AspNetCore.Identity.EntityFrameworkCore
 Install-Package Ardalis.Specification.EntityFrameworkCore
 ```
 
+## UnitTests
+
+```
+Install-Package NSubstitute
+```
 ### Migrations
 
 Before running the following commands, make sure that Web is set as startup project. Run the following commands on the project "Infrastructure".
